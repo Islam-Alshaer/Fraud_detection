@@ -1,0 +1,91 @@
+{
+    "data_improvement": {
+        "under_sampling": "not applied",
+        "over_sampling": "not applied"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "evaluation": {
+        "F2 Score": 0.5783132530120482,
+        "F1 Score": 0.6620689655172414,
+        "False Positive Rate": 0.00012308774397749254,
+        "precision": 0.8727272727272727,
+        "recall": 0.5333333333333333,
+        "specificity": 0.9998769122560225
+    }
+}
+
+{
+    "data_improvement": {
+        "under_sampling": "Repeated Edited Nearest Neighbours",
+        "over_sampling": "not applied"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "evaluation": {
+        "F2 Score": 0.5783132530120482,
+        "F1 Score": 0.6620689655172414,
+        "False Positive Rate": 0.00012308774397749254,
+        "precision": 0.8727272727272727,
+        "recall": 0.5333333333333333,
+        "specificity": 0.9998769122560225
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "RandomUnderSampler",
+        "over_sampling": "not applied"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "evaluation": {
+        "F2 Score": 0.7350096711798839,
+        "F1 Score": 0.6153846153846154,
+        "False Positive Rate": 0.001424301037453842,
+        "precision": 0.4840764331210191,
+        "recall": 0.8444444444444444,
+        "specificity": 0.9985756989625462
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "not applied",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "evaluation": {
+        "F2 Score": 0.7390300230946882,
+        "F1 Score": 0.7852760736196319,
+        "False Positive Rate": 0.00015825567082820467,
+        "precision": 0.8767123287671232,
+        "recall": 0.7111111111111111,
+        "specificity": 0.9998417443291718
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "evaluation": {
+        "F2 Score": 0.7986870897155361,
+        "F1 Score": 0.7807486631016043,
+        "False Positive Rate": 0.00042201512220854583,
+        "precision": 0.7525773195876289,
+        "recall": 0.8111111111111111,
+        "specificity": 0.9995779848777915
+    }
+}
