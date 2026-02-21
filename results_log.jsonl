@@ -10,6 +10,7 @@
     "evaluation": {
         "F2 Score": 0.5783132530120482,
         "F1 Score": 0.6620689655172414,
+        "F1/2 Score": 0.7741935484838712,
         "False Positive Rate": 0.00012308774397749254,
         "precision": 0.8727272727272727,
         "recall": 0.5333333333333333,
@@ -29,6 +30,7 @@
     "evaluation": {
         "F2 Score": 0.5783132530120482,
         "F1 Score": 0.6620689655172414,
+        "F1/2 Score": 0.7741935484838712,
         "False Positive Rate": 0.00012308774397749254,
         "precision": 0.8727272727272727,
         "recall": 0.5333333333333333,
@@ -47,6 +49,7 @@
     "evaluation": {
         "F2 Score": 0.7350096711798839,
         "F1 Score": 0.6153846153846154,
+        "F1/2 Score": 0.5292489108666698,
         "False Positive Rate": 0.001424301037453842,
         "precision": 0.4840764331210191,
         "recall": 0.8444444444444444,
@@ -65,6 +68,7 @@
     "evaluation": {
         "F2 Score": 0.7390300230946882,
         "F1 Score": 0.7852760736196319,
+        "F1/2 Score": 0.8376963350897123,
         "False Positive Rate": 0.00015825567082820467,
         "precision": 0.8767123287671232,
         "recall": 0.7111111111111111,
@@ -83,9 +87,262 @@
     "evaluation": {
         "F2 Score": 0.7986870897155361,
         "F1 Score": 0.7807486631016043,
+        "F1/2 Score": 0.7635983263698468,
         "False Positive Rate": 0.00042201512220854583,
         "precision": 0.7525773195876289,
         "recall": 0.8111111111111111,
         "specificity": 0.9995779848777915
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "threshold": 0.3,
+    "evaluation": {
+        "F2 Score": 0.744466800804829,
+        "F1 Score": 0.6519823788546255,
+        "F1/2 Score": 0.5799373040896989,
+        "False Positive Rate": 0.0011077896957974328,
+        "precision": 0.5401459854014599,
+        "recall": 0.8222222222222222,
+        "specificity": 0.9988922103042026
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Logistic Regression",
+    "hyperparameters": {
+        "max_iter": 1000
+    },
+    "threshold": 0.8,
+    "evaluation": {
+        "F2 Score": 0.8053691275167785,
+        "F1 Score": 0.8135593220338984,
+        "F1/2 Score": 0.8219178082191787,
+        "False Positive Rate": 0.0002637594513803411,
+        "precision": 0.8275862068965517,
+        "recall": 0.8,
+        "specificity": 0.9997362405486196
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Random Forest",
+    "hyperparameters": {
+        "n_estimators": 100
+    },
+    "evaluation": {
+        "F2 Score": 0.8004385964912281,
+        "F1 Score": 0.7849462365591398,
+        "F1/2 Score": 0.770042194092827,
+        "False Positive Rate": 0.00040443115878318974,
+        "precision": 0.7604166666666666,
+        "recall": 0.8111111111111111,
+        "specificity": 0.9995955688412168
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost",
+    "hyperparameters": {
+        "n_estimators": 100
+    },
+    "evaluation": {
+        "F2 Score": 0.8351648351648352,
+        "F1 Score": 0.8216216216216217,
+        "F1/2 Score": 0.8085106382978723,
+        "False Positive Rate": 0.0003340953050817654,
+        "precision": 0.8,
+        "recall": 0.8444444444444444,
+        "specificity": 0.9996659046949182
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost",
+    "hyperparameters": {
+        "n_estimators": 500,
+        "learning_rate": 0.10454749016213019
+    },
+    "evaluation": {
+        "F2 Score": 0.8296460176991151,
+        "F1 Score": 0.8241758241758241,
+        "F1/2 Score": 0.8187772925764192,
+        "False Positive Rate": 0.0002989273782310533,
+        "precision": 0.8152173913043478,
+        "recall": 0.8333333333333334,
+        "specificity": 0.999701072621769
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 2.0,
+        "alpha": 0.25
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.8278145695364238,
+        "F1 Score": 0.819672131147541,
+        "F1/2 Score": 0.8116883116883117,
+        "False Positive Rate": 0.00031651134165640933,
+        "precision": 0.8064516129032258,
+        "recall": 0.8333333333333334,
+        "specificity": 0.9996834886583436
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 2.0,
+        "alpha": 0.5
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.813953488372093,
+        "F1 Score": 0.7586206896551724,
+        "F1/2 Score": 0.7103321033210332,
+        "False Positive Rate": 0.0006330226833128187,
+        "precision": 0.6814159292035398,
+        "recall": 0.8555555555555555,
+        "specificity": 0.9993669773166872
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 2.0,
+        "alpha": 0.1
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.8222222222222222,
+        "F1 Score": 0.8222222222222222,
+        "F1/2 Score": 0.8222222222222222,
+        "False Positive Rate": 0.0002813434148056972,
+        "precision": 0.8222222222222222,
+        "recall": 0.8222222222222222,
+        "specificity": 0.9997186565851943
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.1
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.8075221238938053,
+        "F1 Score": 0.8021978021978022,
+        "F1/2 Score": 0.7969432314410481,
+        "False Positive Rate": 0.0003340953050817654,
+        "precision": 0.7934782608695652,
+        "recall": 0.8111111111111111,
+        "specificity": 0.9996659046949182
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 1.0,
+        "alpha": 0.1
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.8241758241758241,
+        "F1 Score": 0.8108108108108109,
+        "F1/2 Score": 0.7978723404255319,
+        "False Positive Rate": 0.0003516792685071215,
+        "precision": 0.7894736842105263,
+        "recall": 0.8333333333333334,
+        "specificity": 0.9996483207314929
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 2.0,
+        "alpha": 0.1
+    },
+    "threshold": 0.8,
+    "evaluation": {
+        "F2 Score": 0.7744874715261959,
+        "F1 Score": 0.8047337278106509,
+        "F1/2 Score": 0.8374384236453202,
+        "False Positive Rate": 0.00019342359767891682,
+        "precision": 0.8607594936708861,
+        "recall": 0.7555555555555555,
+        "specificity": 0.9998065764023211
+    }
+}
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 2.0,
+        "alpha": 0.1
+    },
+    "threshold": 0.2,
+    "evaluation": {
+        "F2 Score": 0.7744874715261959,
+        "F1 Score": 0.8047337278106509,
+        "F1/2 Score": 0.8374384236453202,
+        "False Positive Rate": 0.00019342359767891682,
+        "precision": 0.8607594936708861,
+        "recall": 0.7555555555555555,
+        "specificity": 0.9998065764023211
     }
 }
