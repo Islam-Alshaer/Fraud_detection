@@ -40,7 +40,7 @@ acceptable in a real life scenario.
 as it has recall of 0.87 and FPR of 0.009 and a precision of 0.12.
 3. if we really care about precision, we may use XGBoost with no over or under sampling,
 with precision of 0.91 and FPR of 0.0001, but recall is only 0.73.
-Test set
+# Test set
 Usinig XGBoost with focal loss, alpha: 0.6, gamma: 4.0, threshold: 0.45, The final scores are:
 
 recall: 0.89
@@ -52,5 +52,6 @@ precision: 0.43
 F2 score: 0.741
 
 F1 score: 0.58
+
 
 
