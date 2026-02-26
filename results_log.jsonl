@@ -1,4 +1,5 @@
-{
+[
+  {
     "data_improvement": {
         "under_sampling": "not applied",
         "over_sampling": "not applied"
@@ -16,9 +17,8 @@
         "recall": 0.5333333333333333,
         "specificity": 0.9998769122560225
     }
-}
-
-{
+  },
+  {
     "data_improvement": {
         "under_sampling": "Repeated Edited Nearest Neighbours",
         "over_sampling": "not applied"
@@ -36,8 +36,8 @@
         "recall": 0.5333333333333333,
         "specificity": 0.9998769122560225
     }
-}
-{
+  },
+  {
     "data_improvement": {
         "under_sampling": "RandomUnderSampler",
         "over_sampling": "not applied"
@@ -55,26 +55,26 @@
         "recall": 0.8444444444444444,
         "specificity": 0.9985756989625462
     }
-}
-{
+  },
+  {
     "data_improvement": {
-        "under_sampling": "not applied",
-        "over_sampling": "SMOTE"
+      "under_sampling": "not applied",
+      "over_sampling": "SMOTE"
     },
     "model": "Logistic Regression",
     "hyperparameters": {
-        "max_iter": 1000
+      "max_iter": 1000
     },
     "evaluation": {
-        "F2 Score": 0.7390300230946882,
-        "F1 Score": 0.7852760736196319,
-        "F1/2 Score": 0.8376963350897123,
-        "False Positive Rate": 0.00015825567082820467,
-        "precision": 0.8767123287671232,
-        "recall": 0.7111111111111111,
-        "specificity": 0.9998417443291718
+      "F2 Score": 0.7390300230946882,
+      "F1 Score": 0.7852760736196319,
+      "F1/2 Score": 0.8376963350897123,
+      "False Positive Rate": 0.00015825567082820467,
+      "precision": 0.8767123287671232,
+      "recall": 0.7111111111111111,
+      "specificity": 0.9998417443291718
     }
-}
+  },
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -93,7 +93,7 @@
         "recall": 0.8111111111111111,
         "specificity": 0.9995779848777915
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -113,7 +113,7 @@
         "recall": 0.8222222222222222,
         "specificity": 0.9988922103042026
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -133,7 +133,7 @@
         "recall": 0.8,
         "specificity": 0.9997362405486196
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -152,7 +152,7 @@
         "recall": 0.8111111111111111,
         "specificity": 0.9995955688412168
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -171,7 +171,7 @@
         "recall": 0.8444444444444444,
         "specificity": 0.9996659046949182
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -191,7 +191,7 @@
         "recall": 0.8333333333333334,
         "specificity": 0.999701072621769
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -213,7 +213,7 @@
         "recall": 0.8333333333333334,
         "specificity": 0.9996834886583436
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -235,7 +235,7 @@
         "recall": 0.8555555555555555,
         "specificity": 0.9993669773166872
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -257,7 +257,7 @@
         "recall": 0.8222222222222222,
         "specificity": 0.9997186565851943
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -279,7 +279,7 @@
         "recall": 0.8111111111111111,
         "specificity": 0.9996659046949182
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -301,7 +301,7 @@
         "recall": 0.8333333333333334,
         "specificity": 0.9996483207314929
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -323,7 +323,7 @@
         "recall": 0.7555555555555555,
         "specificity": 0.9998065764023211
     }
-}
+},
 {
     "data_improvement": {
         "under_sampling": "Random Under Sampling",
@@ -345,4 +345,256 @@
         "recall": 0.7555555555555555,
         "specificity": 0.9998065764023211
     }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random undersampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Logistic Regression with Class Weight",
+    "hyperparameters": {
+        "max_iter": 1000,
+        "class_weight": "balanced"
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.40429887410440124,
+        "F1 Score": 0.22347949080622348,
+        "F1/2 Score": 0.1544175136825645,
+        "False Positive Rate": 0.009460172322841569,
+        "precision": 0.1280388978930308,
+        "recall": 0.8777777777777778,
+        "specificity": 0.9905398276771584
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "not applied",
+        "over_sampling": "not applied"
+    },
+    "model": "Isolation Forest",
+    "hyperparameters": {
+        "contamination": 0.00172
+    },
+    "threshold": 0.5,
+    "evaluation": {
+        "F2 Score": 0.02507584669679896,
+        "F1 Score": 0.010200868962911655,
+        "F1/2 Score": 0.006402757137888513,
+        "False Positive Rate": 0.2762440654123439,
+        "precision": 0.005129504147932367,
+        "recall": 0.9,
+        "specificity": 0.7237559345876561
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random undersampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "K-Nearest Neighbors",
+    "hyperparameters": {
+        "n_neighbors": 4
+    },
+    "evaluation": {
+        "F2 Score": 0.6270358306188925,
+        "F1 Score": 0.4476744186046512,
+        "F1/2 Score": 0.34810126582278483,
+        "False Positive Rate": 0.0031123615262880254,
+        "precision": 0.3031496062992126,
+        "recall": 0.8555555555555555,
+        "specificity": 0.996887638473712
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "not applied",
+        "over_sampling": "not applied"
+    },
+    "model": "K-Nearest Neighbors",
+    "hyperparameters": {
+        "n_neighbors": 3
+    },
+    "evaluation": {
+        "F2 Score": 0.5853658536585366,
+        "F1 Score": 0.6857142857142857,
+        "F1/2 Score": 0.8275862068965517,
+        "False Positive Rate": 3.516792685071215e-05,
+        "precision": 0.96,
+        "recall": 0.5333333333333333,
+        "specificity": 0.9999648320731492
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "not applied",
+        "over_sampling": "not applied"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.9
+    },
+    "evaluation": {
+        "F2 Score": 0.7638888888888888,
+        "F1 Score": 0.8148148148148148,
+        "F1/2 Score": 0.873015873015873,
+        "False Positive Rate": 0.00010550378055213646,
+        "precision": 0.9166666666666666,
+        "recall": 0.7333333333333333,
+        "specificity": 0.9998944962194478
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random undersampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "K-Means Clustering",
+    "evaluation": {
+        "F2 Score": 0.5528846153846154,
+        "F1 Score": 0.6301369863013698,
+        "F1/2 Score": 0.732484076433121,
+        "False Positive Rate": 0.00017583963425356076,
+        "precision": 0.8214285714285714,
+        "recall": 0.5111111111111111,
+        "specificity": 0.9998241603657464
+    }
+},
+{
+  "data_improvement": {
+    "under_sampling": "Random Under Sampling",
+    "over_sampling": "SMOTE"
+  },
+  "model": "Voting Classifier",
+  "hyperparameters": {
+    "models": [
+      "Logistic Regression",
+      "Random Forest",
+      "XGBoost"
+    ]
+  },
+  "evaluation": {
+    "F2 Score": 0.8223684210526315,
+    "F1 Score": 0.8064516129032258,
+    "F1/2 Score": 0.7911392405063291,
+    "False Positive Rate": 0.00036926323193247756,
+    "precision": 0.78125,
+    "recall": 0.8333333333333334,
+    "specificity": 0.9996307367680676
+  }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Voting Classifier",
+    "hyperparameters": {
+        "models": [
+            "LightGBM",
+            "Random Forest",
+            "XGBoost"
+        ]
+    },
+    "evaluation": {
+        "F2 Score": 0.8370044052863436,
+        "F1 Score": 0.8260869565217391,
+        "F1/2 Score": 0.8154506437768241,
+        "False Positive Rate": 0.00031651134165640933,
+        "precision": 0.8085106382978723,
+        "recall": 0.8444444444444444,
+        "specificity": 0.9996834886583436
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "Voting Classifier",
+    "hyperparameters": {
+        "models": [
+            "LightGBM",
+            "Logistic regression with class weight",
+            "XGBoost"
+        ]
+    },
+    "evaluation": {
+        "F2 Score": 0.8406113537117904,
+        "F1 Score": 0.8191489361702128,
+        "F1/2 Score": 0.7987551867219918,
+        "False Positive Rate": 0.00036926323193247756,
+        "precision": 0.7857142857142857,
+        "recall": 0.8555555555555555,
+        "specificity": 0.9996307367680676
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.5
+    },
+    "threshold": 0.3,
+    "evaluation": {
+        "F2 Score": 0.24937655860349128,
+        "F1 Score": 0.1199400299850075,
+        "F1/2 Score": 0.07895775759968417,
+        "False Positive Rate": 0.02046773342711447,
+        "precision": 0.06430868167202572,
+        "recall": 0.8888888888888888,
+        "specificity": 0.9795322665728855
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.5
+    },
+    "threshold": 0.3,
+    "evaluation": {
+        "F2 Score": 0.7276119402985075,
+        "F1 Score": 0.5864661654135338,
+        "F1/2 Score": 0.491183879093199,
+        "False Positive Rate": 0.0017232284156848954,
+        "precision": 0.4431818181818182,
+        "recall": 0.8666666666666667,
+        "specificity": 0.9982767715843152
+    }
+},
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.6
+    },
+    "threshold": 0.4,
+    "evaluation": {
+        "F2 Score": 0.5058365758754864,
+        "F1 Score": 0.31137724550898205,
+        "F1/2 Score": 0.22491349480968859,
+        "False Positive Rate": 0.005855459820643573,
+        "precision": 0.1897810218978102,
+        "recall": 0.8666666666666667,
+        "specificity": 0.9941445401793564
+    }
 }
+]

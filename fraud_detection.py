@@ -1,25 +1,15 @@
 import json
-
 import pandas as pd
-import numpy as np
-from lightgbm import LGBMClassifier
-from scipy.differentiate import derivative
-from scipy.special import expit
-from scipy.stats import uniform
-
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import RandomizedSearchCV
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import fbeta_score
-from sklearn.metrics import roc_curve, auc
-from sklearn.ensemble import IsolationForest
+import models
+import xgboost as xgb
 from imblearn.under_sampling import RepeatedEditedNearestNeighbours
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import SMOTE
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
-import xgboost as xgb
+from scipy.special import expit
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import fbeta_score
+from sklearn.metrics import confusion_matrix
+
 
 #the goal of this project is to predict whether a transaction is fraudulent or not.
 #in an unbalanced dataset we might use focal loss, undersampling, oversampling, epoch manipulation, anomaly detection
@@ -86,139 +76,9 @@ def improve_data(X, y):
     return X, y, log
 
 
-def fit_logistic_regression(X_train, y_train):
-    model = LogisticRegression(max_iter=1000)
-    model.fit(X_train, y_train)
-
-    #store results in the log file
-    log = {
-        'model': 'Logistic Regression',
-        'hyperparameters': {
-            'max_iter': 1000,
-        }
-    }
-
-    return model, log
 
 
-def fit_random_forest(X_train, y_train):
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-
-    #store results in the log file
-    log = {
-        'model': 'Random Forest',
-        'hyperparameters': {
-            'n_estimators': 100,
-        }
-    }
-
-    return model, log
-
-
-def focal_loss_obj(preds, dtrain, gamma=1.0, alpha=0.1):
-    """
-    Custom Focal Loss objective for XGBoost.
-    """
-    labels = dtrain.get_label()
-    p = expit(preds)  # Convert log-odds to probability
-
-    # Calculate Gradient
-    # grad = -alpha * (1-p)^gamma * (gamma*p*log(p) + p - label) ... simplified:
-    grad = p - labels
-    grad = (alpha * (labels) * (1 - p) ** gamma * grad +
-            (1 - alpha) * (1 - labels) * p ** gamma * grad)
-
-    # Calculate Hessian (Second derivative)
-    # For simplicity, many practitioners use a simplified version
-    # or the standard Hessian of Cross Entropy if gamma is small.
-    # Below is the approximate Hessian for Focal Loss:
-    hess = p * (1 - p)
-    hess = (alpha * (labels) * (1 - p) ** gamma * hess +
-            (1 - alpha) * (1 - labels) * p ** gamma * hess)
-
-    return grad, hess
-
-def fit_xgboost_with_focal_loss(X_train, y_train):
-    params = {
-        'max_depth': 6,
-        'eta': 0.1,
-        'eval_metric': 'auc'
-    }
-    model = xgb.train(params, obj=focal_loss_obj, dtrain=xgb.DMatrix(X_train, label=y_train), num_boost_round=100)
-    log = {
-        'model': 'XGBoost with Focal Loss',
-        'hyperparameters': {
-            'num_boost_round': 100,
-            'gamma': 2.0,
-            'alpha': 0.1
-        }
-    }
-    return model, log
-
-def fit_xgboost(X_train, y_train):
-    model = XGBClassifier(n_estimators=100, random_state=42, objective=focal_loss_obj)
-    model.fit(X_train, y_train)
-
-    # random_search = RandomizedSearchCV(estimator=model, param_distributions={
-    #     'learning_rate': uniform(0.05, 0.3), #search for learning rates between 0.01 and 0.3
-    #     'n_estimators': [100, 200, 300, 400, 500]
-    # }, n_iter=10, cv=3, verbose=2, random_state=42, scoring='f1')
-    # random_search.fit(X_train, y_train)
-
-    #store results in the log file
-    log = {
-        'model': 'XGBoost',
-        # 'hyperparameters': {
-            # 'n_estimators': random_search.best_params_['n_estimators'],
-            # 'learning_rate': random_search.best_params_['learning_rate'],
-        # }
-    }
-
-    return model, log
-
-
-def fit_LightGBM(X_train, y_train):
-    model = LGBMClassifier(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-
-    #store results in the log file
-    log = {
-        'model': 'LightGBM',
-        'hyperparameters': {
-            'n_estimators': 100,
-        }
-    }
-
-    return model, log
-
-
-
-#try anomaly detection using isolation forest, and see if it improves the results
-# def fit_isolation_forest(X_train, y_train):
-#     model = IsolationForest(contamination=0.01, random_state=42)
-#     model.fit(X_train)
-#
-#     #store results in the log file
-#     log = {
-#         'model': 'Isolation Forest',
-#         'hyperparameters': {
-#             'contamination': 0.01,
-#         }
-#     }
-#
-#     return model, log
-
-def evaluate_model(model, X_val, y_val):
-    X_val = xgb.DMatrix(X_val) #for focal loss specifically
-    raw_preds = model.predict(X_val)
-    probs = expit(raw_preds)  # Use sigmoid to get 0-1 range
-    y_pred = [1 if p > 0.4 else 0 for p in probs]
-    # y_pred = model.predict(X_val)
-    # probs = model.predict_proba(X_val)[:, 1] #get the probabilities of the positive class
-    # threshold = 0.9 #adjusting this threshold to see how it affects the results
-    # y_pred = (probs >= threshold).astype(int) #convert probabilities to binary
-
+def evaluate_score(y_pred, y_val):
     f2 = fbeta_score(y_val, y_pred, beta=2)
     f1 = fbeta_score(y_val, y_pred, beta=1)
     f_1_2 = fbeta_score(y_val, y_pred, beta=1/2)
@@ -230,7 +90,7 @@ def evaluate_model(model, X_val, y_val):
 
     #store results in the log file
     log = {
-        'threshold': 0.5,
+        'threshold': 0.45,
         'evaluation': {
             'F2 Score': f2,
             'F1 Score': f1,
@@ -244,11 +104,37 @@ def evaluate_model(model, X_val, y_val):
 
     return log
 
+
+def evaluate_model(model, X_val, y_val):
+    # y_pred = model.predict(X_val)
+
+
+    X_val = xgb.DMatrix(X_val) #for focal loss specifically
+    raw_preds = model.predict(X_val)
+    probs = expit(raw_preds)  # Use sigmoid to get 0-1 range
+    y_pred = [1 if p > 0.45 else 0 for p in probs]
+
+    # probs = model.predict_proba(X_val)[:, 1] #get the probabilities of the positive class
+    # threshold = 0.3 #adjusting this threshold to see how it affects the results
+    # y_pred = (probs >= threshold).astype(int) #convert probabilities to binary
+    # # y_pred = [1 if i==-1 else 0 for i in y_pred] #for isolation forest specifically, we need to convert the predictions to binary
+
+    # # #for vote models
+    # y_pred = model[0].predict(X_val)
+    # for i in range(1, len(model)):
+    #     sub_model = model[i]
+    #     y_pred = y_pred + sub_model.predict(X_val)
+    #
+    # y_pred = (y_pred / len(model) >= 0.5).astype(int) #average the predictions and convert to binary
+
+    return evaluate_score(y_pred, y_val)
+
+
 if __name__ == "__main__":
     #load the dataset
     train = pd.read_csv('split/train.csv')
-    val = pd.read_csv('split/val.csv')
-
+    # val = pd.read_csv('split/val.csv')
+    val = pd.read_csv('split/test.csv')
     total_log = {}
 
     #prepare data
@@ -260,16 +146,22 @@ if __name__ == "__main__":
 
     #imporve data using over and/or under sampling and/or more
     X_train, y_train, log = improve_data(X_train, y_train)
+    # log = {}
     total_log = total_log | log
-
     X_train = scaler.fit_transform(X_train)
 
     #fit the model
-    # model, log = fit_logistic_regression(X_train, y_train)
-    # model, log = fit_random_forest(X_train, y_train)
-    # model, log = fit_xgboost(X_train, y_train)
-    # model, log = fit_LightGBM(X_train, y_train)
-    model, log = fit_xgboost_with_focal_loss(X_train, y_train)
+    # model, log = models.fit_logistic_regression(X_train, y_train)
+    # model, log = models.fit_random_forest(X_train, y_train)
+    # model, log = models.fit_xgboost(X_train, y_train)
+    # model, log = models.fit_LightGBM(X_train, y_train)
+    model, log = models.fit_xgboost_with_focal_loss(X_train, y_train)
+    # model, log = models.fit_logistic_regression_with_class_weight(X_train, y_train)
+    # model, log = models.fit_isolation_forest(X_train, y_train)
+    # model, log = models.fit_KNN(X_train, y_train)
+    # model, log = models.fit_kmeans(X_train, y_train)
+    # model, log = models.fit_vote(X_train, y_train)
+
     total_log = total_log | log #append the log of the model to the total log
 
     #evaluate the model on the validation set
@@ -281,3 +173,33 @@ if __name__ == "__main__":
         log_file.write(json.dumps(total_log, indent=4) + '\n')
 
     print("Results have been logged to results_log.jsonl")
+
+
+
+    '''
+    results for test set: 
+    
+{
+    "data_improvement": {
+        "under_sampling": "Random Under Sampling",
+        "over_sampling": "SMOTE"
+    },
+    "model": "XGBoost with Focal Loss",
+    "hyperparameters": {
+        "num_boost_round": 100,
+        "gamma": 4.0,
+        "alpha": 0.6
+    },
+    "threshold": 0.45,
+    "evaluation": {
+        "F2 Score": 0.7410562180579217,
+        "F1 Score": 0.5878378378378378,
+        "F1/2 Score": 0.48712206047032475,
+        "False Positive Rate": 0.0019696463429646695,
+        "precision": 0.4371859296482412,
+        "recall": 0.8969072164948454,
+        "specificity": 0.9980303536570353
+    }
+}
+ 
+    '''
