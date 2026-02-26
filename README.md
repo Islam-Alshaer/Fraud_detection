@@ -24,13 +24,14 @@ In this project I tried the following techniques for handling imbalanced dataset
 1. weighted class logistic regression
 2. focal loss with XGBoost
 3. random forest (as tree based models tend to perform better with poor balanced datasets)
-4. vote based model
+4. vote based models
+
 of course more than that were tried, but those were the most significant. It’s important to notice
 that we have to get the best threshold and hyper parameters for each model of those.
-Results
+# Results
 analysis of the results given by the validation data are documented in the file
 results_analysis.ipynb.
-The final suggestions are:
+# The final suggestions are:
 1. random undersampling with SMOTE oversampling with XGBoost with focal loss, with a recall
 of 0.86 and FPR of 0.005 and precision of 0.18. , so in a real life scenario,
 86% of frauds are detected and 5 out of 1000 transactions are false alarms, which is -allegedly-
@@ -51,4 +52,5 @@ precision: 0.43
 F2 score: 0.741
 
 F1 score: 0.58
+
 
