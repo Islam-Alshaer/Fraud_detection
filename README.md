@@ -1,26 +1,26 @@
 # Introduction
-this project is about detecting fraud transactions using a tabular dataset of over 170,000
+this project is about detecting fraud transactions using a tabular dataset of over **170,000**
 transactions. We use 30 features, 28 of them are anonymous and 2 are known.
 # Challenge
 the nature of this data is challenging because it’s imbalanced, such that positive class (fruad) is
-0.172% of the data with only 492 frauds in the data, which makes models tend to predict everything as
-negative as it will lead to less loss. In addition, accuracy metric here is misleading, as predicting
+**0.172%** of the data with only 492 frauds in the data, which makes models tend to predict everything as
+negative as it will lead to less loss. In addition, *accuracy metric here is misleading*, as predicting
 everything naively as negative (non-fraud) will lead to accuracy of 99.7% despite missing all of the
 positive class.
-Requirements
+# Requirements
 In a real life scenario, it will be up to management to decide which metric matters most. Also,
-the amount of false positives acceptable is to be given by the customer. In this project I assume that
-recall and FPR are the most important metrics of all, because we need to detect frauds without
-annoying customers with a lot of false alarms. I assume 0% - 3% is the range of acceptable FPR for the
-benefit of recall in range 75-100%. Those numbers are assumed based on personal view of the project,
+the amount of false positives acceptable is to be given by the customer. In this project I *assume that
+recall and FPR are the most important metrics of all*, because we need to detect frauds without
+annoying customers with a lot of false alarms. **I assume 0% - 3% is the range of acceptable FPR for the
+benefit of recall in range 75-100%**. Those numbers are assumed based on personal view of the project,
 however we can study it more if we want to see the economical and legal effect of recall and FPR.
 # Approach
-In this project I tried the following techniques for handling unbalanced datasets:
-for data:
+In this project I tried the following techniques for handling imbalanced datasets:
+## for data:
 1. random under sampling
 2. repeated edited nearest neighbors under sampling
 3. SMOTE oversampling
-for models:
+## for models:
 1. weighted class logistic regression
 2. focal loss with XGBoost
 3. random forest (as tree based models tend to perform better with poor balanced datasets)
@@ -51,3 +51,4 @@ precision: 0.43
 F2 score: 0.741
 
 F1 score: 0.58
+
